@@ -17,12 +17,77 @@ function getElement(id) {
 
 //   // card container k dhoro
 //   const cardContainer = getElement("cart-container");
+
+// loop
+//     const newCart = document.createElement("div");
+//     newCart.innerHTML = `
+//                 <div class=" bg-gray-200 flex justify-between items-center pr-7 pl-2 py-2 my-2">
+//                   <img src="${productImg}" alt="" class="w-12">
+//                   <div>
+//                     <h2 class="font-bold">${productTitle}</h2>
+//                     <p class="text-sm">${productPrice}TK</p>
+//                   </div>
+//                 </div>
+//   `;
+//     cardContainer.append(newCart);
 // });
+
+
 
 const cardBtns = document.getElementsByClassName("card-btn");
 for (let cardbutton of cardBtns) {
   cardbutton.addEventListener("click", function () {
-    const productImg =
+//     const productImg =
+//       cardbutton.parentNode.parentNode.parentNode.children[0].children[0].src;
+//     // title dhorlam
+//     const productTitle = cardbutton.parentNode.parentNode.children[0].innerText;
+//     // price dhorlam
+//     const productPrice =
+//       cardbutton.parentNode.parentNode.children[2].children[0].innerText;
+//     //total price
+//     const totalPrice = getElement("total-price").innerText;
+//     let currentTotal = Number(productPrice) + Number(totalPrice);
+//     getElement("total-price").innerText = currentTotal.toFixed(2);
+//     // card container k dhoro
+//     const cardContainer = getElement("cart-container");
+//     // loop
+//     const newCart = document.createElement("div");
+//     newCart.innerHTML = `
+//                 <div class=" bg-gray-200 flex justify-between items-center pr-7 pl-2 py-2 my-2">
+//                   <img src="${productImg}" alt="" class="w-12">
+//                   <div>
+//                     <h2 class="font-bold">${productTitle}</h2>
+//                     <p class="text-sm">${productPrice}TK</p>
+//                   </div>
+//                 </div>
+//   `;
+//     cardContainer.append(newCart);
+
+//     const quantity = getElement("total-quantity").innerText;
+//     const currentQuantity = Number(quantity) + 1;
+//     getElement("total-quantity").innerText = currentQuantity;
+  });
+}
+
+
+
+//document clear
+document.getElementById('btn-clear').addEventListener('click', function(){
+    const cardContainer = getElement('cart-container');
+    cardContainer.innerHTML = '';
+    getElement("total-quantity").innerText = 0;
+    getElement("total-price").innerText = 0;
+})
+
+
+//delegation
+getElement('product-box')
+.addEventListener('click', function(e){
+    if(e.target.className.includes('card-btn')){
+    const cardbutton = e.target;
+
+
+     const productImg =
       cardbutton.parentNode.parentNode.parentNode.children[0].children[0].src;
     // title dhorlam
     const productTitle = cardbutton.parentNode.parentNode.children[0].innerText;
@@ -51,15 +116,5 @@ for (let cardbutton of cardBtns) {
     const quantity = getElement("total-quantity").innerText;
     const currentQuantity = Number(quantity) + 1;
     getElement("total-quantity").innerText = currentQuantity;
-  });
-}
-
-
-
-//document clear
-document.getElementById('btn-clear').addEventListener('click', function(){
-    const cardContainer = getElement('cart-container');
-    cardContainer.innerHTML = '';
-    getElement("total-quantity").innerText = 0;
-    getElement("total-price").innerText = 0;
+    }
 })
